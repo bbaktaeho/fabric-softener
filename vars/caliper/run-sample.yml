@@ -17,6 +17,6 @@ caliper_config_rounds:
           money: 100
 caliper_run_install_chaincodes:
   - simple
-  - smallbank
+  # - smallbank
   - fixed-asset
-  - auction
+  # - auction

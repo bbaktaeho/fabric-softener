@@ -1,0 +1,45 @@
+---
+ansible_ssh_user: vm
+ansible_python_interpreter: /usr/bin/python
+bld_msp_config_name: 1org1peer_1raft
+bld_peer_orgs:
+  - name: Org1
+    msp_id: Org1MSP
+    domain: org1.com
+    enable_node_ous: true
+    user_number: 1
+    peers:
+      - address: 192.168.66.111
+        ssh_user: vm
+        host_name: peer0
+        common_name:
+        port: 7051
+        anchor: true
+    ca:
+      address: 192.168.66.111
+      ssh_user: vm
+      port: 7054
+      op_port: 9444
+bld_orderer_orgs:
+  - name: OrdererOrg
+    msp_id: OrdererOrgMSP
+    domain: ordererorg.com
+    enable_node_ous: true
+    orderers:
+      - address: 192.168.66.111
+        ssh_user: vm
+        host_name: orderer0
+        common_name:
+        port: 7050
+        consenter_port: 7056
+    ca:
+      address: 192.168.66.111
+      ssh_user: vm
+      port: 7057
+      op_port: 9447
+bld_caliper:
+  type: local
+  calipers:
+    - address: 192.168.66.115
+      ssh_user: vm
+      role: localmaster

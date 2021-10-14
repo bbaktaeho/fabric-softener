@@ -5,11 +5,11 @@
       vars:
         peer_actions:
           - service:
-            - stop
+              - stop
           - install:
-            - package
-            - fabric-v2
-        install_fabric_version: v2.2.2
+              - package
+              - fabric-v2
+        install_fabric_version: f4ebe34
 
 - hosts: orderers
   gather_facts: false
@@ -18,11 +18,11 @@
       vars:
         orderer_actions:
           - service:
-            - stop
+              - stop
           - install:
-            - package
-            - fabric-v2
-        install_fabric_version: v2.2.2
+              - package
+              - fabric-v2
+        install_fabric_version: f4ebe34
 
 - hosts: cas
   serial: 1
@@ -32,7 +32,7 @@
       vars:
         ca_actions:
           - service:
-            - stop
+              - stop
           - install:
-            - package
-            - fabric-ca
+              - package
+              - fabric-ca

@@ -1,0 +1,91 @@
+---
+ansible_ssh_user: ubuntu
+bld_msp_config_name: 3org1peer_3raft
+ansible_python_interpreter: /usr/bin/python
+bld_peer_orgs:
+  - name: Org1
+    msp_id: Org1MSP
+    domain: org1.com
+    enable_node_ous: true
+    user_number: 1
+    peers:
+      - address: 3.34.253.146
+        ssh_user: ubuntu
+        host_name: peer0
+        common_name:
+        port: 7051
+        anchor: true
+    ca:
+      address: 3.36.60.66
+      ssh_user: ubuntu
+      port: 7054
+      op_port: 9444
+  - name: Org2
+    msp_id: Org2MSP
+    domain: org2.com
+    enable_node_ous: true
+    user_number: 1
+    peers:
+      - address: 3.35.207.54
+        ssh_user: ubuntu
+        host_name: peer0
+        common_name:
+        port: 7051
+        anchor: true
+    ca:
+      address: 3.36.60.66
+      ssh_user: ubuntu
+      port: 7055
+      op_port: 9445
+  - name: Org3
+    msp_id: Org3MSP
+    domain: org3.com
+    enable_node_ous: true
+    user_number: 1
+    peers:
+      - address: 52.78.157.151
+        ssh_user: ubuntu
+        host_name: peer0
+        common_name:
+        port: 7051
+        anchor: true
+    ca:
+      address: 3.36.60.66
+      ssh_user: ubuntu
+      port: 7056
+      op_port: 9446
+bld_orderer_orgs:
+  - name: OrdererOrg
+    msp_id: OrdererOrgMSP
+    domain: ordererorg.com
+    enable_node_ous: true
+    orderers:
+      - address: 13.124.79.175
+        ssh_user: ubuntu
+        host_name: orderer0
+        common_name:
+        port: 7050
+        consenter_port: 7056
+      - address: 3.38.93.143
+        ssh_user: ubuntu
+        host_name: orderer1
+        common_name:
+        port: 7050
+        consenter_port: 7056
+      - address: 3.35.230.5
+        ssh_user: ubuntu
+        host_name: orderer2
+        common_name:
+        port: 7050
+        consenter_port: 7056
+    ca:
+      address: 3.36.60.66
+      ssh_user: ubuntu
+      port: 7057
+      op_port: 9447
+bld_caliper:
+  type: local
+  calipers:
+    - address: 3.36.100.149
+      ssh_user: ubuntu
+      role: localmaster
